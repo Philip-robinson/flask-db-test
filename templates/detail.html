@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+ 
+       <h1>Details 0f {{detail.name}}</h1>
+       <a href="/index">Home</a>
+        <table>
+                <tr><td>Shares held</td><td>{{detail.number}}</td></tr>
+                <tr><td>Price per share</td><td>£{{detail.price}}</td></tr>
+                <tr><td>Total value</td><td>£{{detail.value}}</td></tr>
+                <tr><td>Cost</td><td>£{{'%02.f'|format(detail.cost)|float}}</td></tr>
+                {% if detail.profit <  0 : %}
+                    <tr><td>Profit</td><td>-£{{'%0.2f'|format(0.0-detail.profit)|float}}</td></tr>
+                {% else: %}
+                    <tr><td>Profit</td><td>£{{'%0.2f'|format(detail.profit)|float}}</td></tr>
+                {% endif %}
+        </table>
+       <a href="/index">Home</a>
+    </body>
+</html>

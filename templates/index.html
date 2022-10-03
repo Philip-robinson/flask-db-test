@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <table>
+        {% for share in shares: %}
+                <tr><td><a href="/detail/{{share.id}}">{{ share.name }}</a></td></tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>
