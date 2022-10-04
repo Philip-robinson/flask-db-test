@@ -41,4 +41,4 @@ def company(name):
     return ret
 
 # start the application on port 8010
-app.run(port=8010)
+app.run(host="0.0.0.0", port=8010)

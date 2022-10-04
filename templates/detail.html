@@ -10,12 +10,12 @@
         <table>
                 <tr><td>Shares held</td><td>{{detail.number}}</td></tr>
                 <tr><td>Price per share</td><td>£{{detail.price}}</td></tr>
-                <tr><td>Total value</td><td>£{{detail.value}}</td></tr>
-                <tr><td>Cost</td><td>£{{'%02.f'|format(detail.cost)|float}}</td></tr>
+                <tr><td>Total value</td><td>£{{'{:,.2f}'.format(detail.value)}}</td></tr>
+                <tr><td>Cost</td><td>£{{'{:,.2f}'.format(detail.cost)}}</td></tr>
                 {% if detail.profit <  0 : %}
-                    <tr><td>Profit</td><td>-£{{'%0.2f'|format(0.0-detail.profit)|float}}</td></tr>
+                    <tr><td>Profit</td><td>-£{{'{:,.2f}'.format(0.0-detail.profit)}}</td></tr>
                 {% else: %}
-                    <tr><td>Profit</td><td>£{{'%0.2f'|format(detail.profit)|float}}</td></tr>
+                    <tr><td>Profit</td><td>£{{'{:,.2f}'.format(detail.profit)}}</td></tr>
                 {% endif %}
         </table>
        <a href="/index">Home</a>
