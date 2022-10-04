@@ -31,11 +31,11 @@ where you wish to store the environment data.
 python3 -m venv venv
 ```
 
-And actrivate it with (linux style)
+And actrivate it Linux style:
 ```
 source venv/bin/activate
 ```
-Or Microsoft style
+Or Microsoft style:
 ```
 venv\\Scripts\\activate
 ```
@@ -103,7 +103,7 @@ There are five files:
 * __templates/details.html__
 * __static/style.css__
 
-### static files style.css
+### Static files style.css
 
 Files put in the static directory are automatically made available
 as stored.
@@ -111,9 +111,9 @@ as stored.
 The file __static/style.css__ can be accessed in this application
 as __http://localhost:8010/static/style.css__
 
-### template files stored under templates
+### Template files stored under templates
 
-the directory __templates__ is where template files are expected to be found
+The directory __templates__ is where template files are expected to be found
 
 There are two in this project, one for each of the displayed pages.
 
@@ -155,11 +155,11 @@ The other __templates/detail.html__ is similar.
                 <tr><td>Shares held</td><td>{{detail.number}}</td></tr>
                 <tr><td>Price per share</td><td>£{{detail.price}}</td></tr>
                 <tr><td>Total value</td><td>£{{detail.value}}</td></tr>
-                <tr><td>Cost</td><td>£{{'%02.f'|format(detail.cost)|float}}</td></tr>
+                <tr><td>Cost</td><td>£{{'{:,.2f}'.format(detail.cost)}}</td></tr>
                 {% if detail.profit <  0 : %}
-                    <tr><td>Profit</td><td>-£{{'%0.2f'|format(0.0-detail.profit)|float}}</td></tr>
+                    <tr><td>Profit</td><td>-£{{'{:,.2f}'.format(0.0-detail.profit)}}</td></tr>
                 {% else: %}
-                    <tr><td>Profit</td><td>£{{'%0.2f'|format(detail.profit)|float}}</td></tr>
+                    <tr><td>Profit</td><td>£{{'{:,.2f}'.format(detail.profit)}}</td></tr>
                 {% endif %}
         </table>
        <a href="/index">Home</a>
@@ -169,8 +169,9 @@ The other __templates/detail.html__ is similar.
  This takes two parameters __title__ which is a title and __detail__ which is a dict
 holding the fields to be displayed.
 
-the somewaht complicated looking pipeline __'%0.2f'|format(detail.profit)|float__ formats
-the detail.profit value to have 2 digits after the decimal point.
+the somewaht complicated looking field entry __'{:,.2f}'.format(detail.profit)__ formats
+the detail.profit value to have 2 digits after the decimal point and thousands seperators
+when needed.
 
 ### database.py
 
